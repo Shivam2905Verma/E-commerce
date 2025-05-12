@@ -10,11 +10,13 @@ import orderRoute from "./routes/orderRoute.js";
 //App Config
 const app = express();
 const port = process.env.PORT || 4000;
-connectDB();
 
 //middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "https://e-commerce-frontend-delta-one.vercel.app", // ✅ your frontend domain
+}));
+connectDB();
 
 //api endpints
 app.use("/api/user" ,userRouter)
